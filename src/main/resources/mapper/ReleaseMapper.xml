@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hl.diary.mapper.ReleaseMapper">
+  <resultMap id="BaseResultMap" type="com.hl.diary.pojo.Release">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="createtime" jdbcType="VARCHAR" property="createtime" />
+    <result column="weather" jdbcType="INTEGER" property="weather" />
+    <result column="mood" jdbcType="INTEGER" property="mood" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="music" jdbcType="INTEGER" property="music" />
+    <result column="musicurl" jdbcType="VARCHAR" property="musicurl" />
+    <result column="theme" jdbcType="INTEGER" property="theme" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, openid, createtime, weather, mood, location, music, musicurl, theme, content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from release
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from release
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hl.diary.pojo.Release">
+    insert into release (id, uid, openid, 
+      createtime, weather, mood, 
+      location, music, musicurl, 
+      theme, content)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{weather,jdbcType=INTEGER}, #{mood,jdbcType=INTEGER}, 
+      #{location,jdbcType=VARCHAR}, #{music,jdbcType=INTEGER}, #{musicurl,jdbcType=VARCHAR}, 
+      #{theme,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hl.diary.pojo.Release">
+    insert into release
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="weather != null">
+        weather,
+      </if>
+      <if test="mood != null">
+        mood,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="music != null">
+        music,
+      </if>
+      <if test="musicurl != null">
+        musicurl,
+      </if>
+      <if test="theme != null">
+        theme,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="weather != null">
+        #{weather,jdbcType=INTEGER},
+      </if>
+      <if test="mood != null">
+        #{mood,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="music != null">
+        #{music,jdbcType=INTEGER},
+      </if>
+      <if test="musicurl != null">
+        #{musicurl,jdbcType=VARCHAR},
+      </if>
+      <if test="theme != null">
+        #{theme,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hl.diary.pojo.Release">
+    update release
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="weather != null">
+        weather = #{weather,jdbcType=INTEGER},
+      </if>
+      <if test="mood != null">
+        mood = #{mood,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="music != null">
+        music = #{music,jdbcType=INTEGER},
+      </if>
+      <if test="musicurl != null">
+        musicurl = #{musicurl,jdbcType=VARCHAR},
+      </if>
+      <if test="theme != null">
+        theme = #{theme,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hl.diary.pojo.Release">
+    update release
+    set uid = #{uid,jdbcType=INTEGER},
+      openid = #{openid,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      weather = #{weather,jdbcType=INTEGER},
+      mood = #{mood,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      music = #{music,jdbcType=INTEGER},
+      musicurl = #{musicurl,jdbcType=VARCHAR},
+      theme = #{theme,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
